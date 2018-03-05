@@ -1,0 +1,101 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">AGENDA DE CONTATOS</h4>
+        <p class="card-text">Organize todos seus contatos de forma fácil</p>
+    </div>
+
+    <!-- MENSAGENS -->
+    <div class="card-body">
+        <alert *ngIf="alertError" dismissOnTimeout="3000" type="danger" dismissible="true">
+            <strong>Erro!!!</strong> Erro ao tentar excluir.
+        </alert>
+        <alert *ngIf="alertSuccess" dismissOnTimeout="3000" type="success" dismissible="true">
+            <strong>Excluido!!!</strong> Contato excluido com <strong>sucesso</strong>.
+        </alert>
+
+        <!--  NOVO CONTATO -->
+        <button *ngIf="contatos.length !== 0" type="button" (click)="novoContato()" class="btn btn-outline-primary"> <i class="fa fa-plus"></i> novo contato</button>
+        <p></p>
+
+        <!-- CARDS -->
+        <div class="row">
+            <div class="col-sm-4" *ngFor="let contato of contatos">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-block">
+                        <div class="card-body">
+                            <h5 class="card-title">{{contato?.nome}}</h5>
+                            <p class="card-text mb-2 text-muted">{{contato?.email}}</p>
+                            <p class="card-text mb-2 text-muted">{{contato?.telefone}}</p>
+                            <a (click)="editarContato(contato)">
+                                <span class="badge badge-primary"><i class="fa fa-pencil"></i> editar</span>
+                            </a>
+                            <a (click)="confirmaExclusaoModal(template, contato)" data-toggle="modal" data-target="#confirmacaoExclusaoModal">
+                                <span class="badge badge-danger"> <i class="fa fa-remove"></i> exluir</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <p></p>
+            </div>
+
+            <div class="col-sm-12" *ngIf="contatos.length == 0">
+                <div class="card">
+
+                    <div class="card-body">
+                        <h5 class="card-title">NENHUM CONTATO ENCONTRADO</h5>
+                        <p class="card-text mb-2 text-muted">Cadastre um agora mesmo</p>
+                        <button (click)="novoContato()" type="button" class="btn btn-sm btn-primary">
+                                <i class="fa fa-plus"></i> Cadastrar
+                        </button>
+                    </div>
+
+                </div>
+                <p></p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- MODAL DE EXCLUSÃO -->
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Você tem certeza que deseja exluir <strong>{{contatoRemovido?.nome}} </strong> ?</p>
+        <button type="button" class="btn btn-default" (click)="confirmaExclusao()"> SIM </button>
+        <button type="button" class="btn btn-primary" (click)="cancelaExclusao()"> NÃO</button>
+    </div>
+</ng-template>
+
+
+
+
+
+
+<!-- <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th class="text-center">Nome</th>
+                <th class="text-center">Telefone</th>
+                <th class="text-center">Email</th>
+                <th class="text-center">opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let contato of contatos">
+                <td class="text-center">{{contato.nome}}</td>
+                <td class="text-center">{{contato.telefone}}</td>
+                <td class="text-center">{{contato.email}}</td>
+                <td class="text-center">
+                    <a (click)="editarContato(contato)">
+                        <span class="badge badge-primary"><i class="fa fa-pencil"></i> editar</span>
+                    </a>
+                    <a (click)="confirmaExclusaoModal(template, contato)" data-toggle="modal" data-target="#confirmacaoExclusaoModal">
+                        <span class="badge badge-danger"> <i class="fa fa-remove"></i> exluir</span>
+                    </a>
+                </td>
+            </tr>
+            <tr *ngIf="contatos.length == 0">
+                <td colspan="6">NENHUM CONTATO ENCONTRADO</td>
+            </tr>
+        </tbody>
+    </table> -->

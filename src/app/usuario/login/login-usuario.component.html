@@ -1,0 +1,80 @@
+<div class="container" id="login">
+    <alert *ngIf="error" dismissOnTimeout="3000" type="danger" dismissible="true">
+        <strong>Ops!!!</strong> Erro ao tentar realizar login.
+    </alert>
+    <form class="needs-validation" name="form" role="form" (ngSubmit)="login(loginForm)" #loginForm="ngForm" novalidate>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Informe seu email" [(ngModel)]="email" #emailInput="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+            <div *ngIf="emailInput.dirty && emailInput.invalid" class="form-control-feedback">
+                <small class="form-text text-danger" *ngIf="emailInput.errors.required">
+                    email é obrigatório.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">Senha</label>
+            <input type="password" class="form-control" id="password" name="senha" placeholder="Informe sua senha" [(ngModel)]="password" #passwordInput="ngModel" minlength="3" maxlength="10" required>
+            <div *ngIf="passwordInput.dirty && passwordInput.invalid" class="form-control-feedback">
+                <small class="form-text text-danger" *ngIf="passwordInput.errors.required">
+                    senha é obrigatório.
+                </small>
+            </div>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="check-remember">
+            <label class="form-check-label" for="check-remember">Lembre-me</label>
+        </div>
+        <p></p>
+        <button type="submit" [disabled]="!loginForm.form.valid" class="col-lg-12 btn btn-primary">Entrar</button>
+
+    </form>
+
+    <p></p>
+    <a routerLink="/">Esqueceu sua senha ?</a>
+    <div class="or-box">
+        <span class="or">OU</span>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <button (click)="registrar()" class="btn btn-success btn-block btn-signin" type="submit">Registre-se</button>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<!-- <div class="container" id="login">
+    <form [formGroup]="formLogin" novalidate>
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" formControlName="email" placeholder="Informe seu email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Senha</label>
+            <input type="password" class="form-control" name="password" formControlName="password" placeholder="Informe sua senha" required>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="check-remember">
+            <label class="form-check-label" for="check-remember">Lembre-me</label>
+        </div>
+        <p></p>
+        <button type="submit" class="col-lg-12 btn btn-primary">Entrar</button>
+
+    </form>
+
+    <p></p>
+    <a routerLink="/">Esqueceu sua senha ?</a>
+    <div class="or-box">
+        <span class="or">OU</span>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <button (click)="registrar()" class="btn btn-success btn-block btn-signin" type="submit">Registre-se</button>
+        </div>
+    </div>
+
+</div> -->

@@ -1,0 +1,11 @@
+<!-- Just an image -->
+<nav class="navbar navbar-dark bg-dark justify-content-between">
+    <a class="navbar-brand" [routerLink]="['/']">
+        <img src="../assets/images/icon_addressbook.ico" width="50" height="50" alt="">
+        <span id="name-brand"> Agenda de Contatos</span>
+    </a>
+    <div>
+        <span class="navbar-text" style="color: white; margin-right: 5px"> Olá {{usuarioLogado?.nome}} </span>
+        <button type="button" (click)="sair()" class="btn btn-outline-success  my-2 my-sm-0"> <i class="fa fa-sign-out-alt"></i> Sair</button>
+    </div>
+</nav>

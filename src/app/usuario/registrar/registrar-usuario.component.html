@@ -1,0 +1,63 @@
+<form name="form" role="form" (ngSubmit)="salvarUsuario(usuarioForm)" #usuarioForm="ngForm" novalidate>
+    <div class="card">
+        <div class="card-header">
+            <h4 class="card-title">AGENDA DE CONTATOS</h4>
+            <p class="card-text">Organize todos seus contatos de forma fácil</p>
+        </div>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a [routerLink]="['/contatos']">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{titulo}}</li>
+            </ol>
+        </nav>
+        <div class="card-body">
+
+            <!-- BOTAO VOLTAR -->
+            <button type="button" [routerLink]="['/contatos']" class="btn btn-outline-primary"> <i class="fa fa-arrow-left"></i> voltar</button>
+
+            <p></p>
+            <!-- MENSAGENS -->
+            <alert *ngIf="alertError" dismissOnTimeout="3000" type="danger" dismissible="true">
+                <strong>Ops!!!</strong> Erro ao tentar realizar login.
+            </alert>
+            <alert *ngIf="alertSuccess" dismissOnTimeout="3000" type="success" dismissible="true">
+                <strong>Sucesso!!!</strong> Contato Salvo.
+            </alert>
+
+            <!-- FORMULARIO DE CADASTRO -->
+            <input type="hidden" [(ngModel)]="usuario.id" name="id" />
+
+            <div class="form-group">
+                <label for="nome" class="control-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Informe seu nome" [(ngModel)]="usuario.nome" #nomeInput="ngModel" minlength="3" maxlength="50" required/>
+                <div *ngIf="nomeInput.dirty && nomeInput.invalid" class="form-control-feedback">
+                    <small class="form-text text-danger" *ngIf="nomeInput.errors.required">
+                                nome é obrigatório.
+                        </small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="control-label">Email</label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="Informe seu email" [(ngModel)]="usuario.email" #emailInput="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required />
+                <div *ngIf="emailInput.dirty && emailInput.invalid" class="form-control-feedback">
+                    <small class="form-text text-danger" *ngIf="emailInput.errors.required">
+                            email é obrigatório.
+                        </small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="control-label">Senha</label>
+                <input type="password" class="form-control" id="password" name="senha" placeholder="Informe seu telefone" [(ngModel)]="usuario.senha" #passwordInput="ngModel" minlength="3" maxlength="15" required/>
+                <div *ngIf="passwordInput.dirty && passwordInput.invalid" class="form-control-feedback">
+                    <small class="form-text text-danger" *ngIf="passwordInput.errors.required">
+                        senha é obrigatória.
+                        </small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" [disabled]="!usuarioForm.form.valid" class="col-sm-12 col-lg-3 btn btn-primary">Salvar</button>
+            </div>
+        </div>
+    </div>
+</form>

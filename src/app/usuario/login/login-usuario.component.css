@@ -1,0 +1,35 @@
+#login {
+    background-color: #f1f1f1;
+    width: 400px;
+    left: 50%;
+    margin: -130px 0 0 -210px;
+    padding: 15px;
+    position: absolute;
+    top: 50%;
+    border-radius: 10px;
+}
+
+.or-box {
+    width: 100%;
+    position: relative;
+    border-top: 1px solid #dfdfdf;
+    padding-top: 40px;
+    margin-top: 30px;
+}
+
+.or {
+    color: #666666;
+    background-color: #f1f1f1;
+    position: absolute;
+    text-align: center;
+    top: -10px;
+    width: 30px;
+    left: 47%;
+}
+
+
+/* .forgot-password:hover,
+.forgot-password:active,
+.forgot-password:focus {
+    color: rgb(12, 97, 33);
+} */
