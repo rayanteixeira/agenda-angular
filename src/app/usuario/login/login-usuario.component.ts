@@ -29,13 +29,13 @@ export class LoginUsuarioComponent implements OnInit {
   login(form: NgForm) {
     this.error = false;
     this.loginService.login(form.value)
-    .subscribe((res) => {
-      if (res.email !== null ) {
-        this.router.navigate(['/contatos']);
-      }else {
-        this.error = true;
-      }
-    });
+      .subscribe((res) => {
+        if (res.id !== null) {
+          this.router.navigate(['/contatos']);
+        } else {
+          this.error = true;
+        }
+      });
 
   }
 }

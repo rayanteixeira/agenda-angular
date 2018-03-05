@@ -47,7 +47,7 @@ export class RegistrarUsuarioComponent implements OnInit {
         if (res.id !== null)  {
           this.alertSuccess = true;
           usuarioForm.resetForm();
-          this.router.navigate(['/contatos']);
+          this.router.navigate(['/']);
         }else {
           this.alertError = true;
         }

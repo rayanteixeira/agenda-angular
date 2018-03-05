@@ -19,9 +19,6 @@ export class LoginUsuarioService {
       .post(`${this.resourceUrl}/registrar`, usuarioForm, { headers: this.headers })
       .map((res: Response) => {
         const response = res.json() as Usuario;
-        if (response.id !== null) {
-          localStorage.setItem('user', JSON.stringify(response));
-      }
         return response;
       });
   }
@@ -31,7 +28,7 @@ export class LoginUsuarioService {
       .post(`${this.resourceUrl}/login`, usuario, { headers: this.headers })
       .map((res: Response) => {
         const response = res.json() as Usuario;
-        if (response.email !== null) {
+        if (response.id !== null) {
             localStorage.setItem('user', JSON.stringify(response));
         }
         return response;

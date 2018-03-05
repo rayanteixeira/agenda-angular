@@ -14,12 +14,18 @@
         </alert>
 
         <!--  NOVO CONTATO -->
-        <button *ngIf="contatos.length !== 0" type="button" (click)="novoContato()" class="btn btn-outline-primary"> <i class="fa fa-plus"></i> novo contato</button>
-        <p></p>
+        <div *ngIf="contatos.length !== 0">
+            <button type="button" (click)="novoContato()" class="col-sm-3 btn btn-outline-primary"> <i class="fa fa-plus"></i> novo contato</button>
 
+            <form style="float: right" class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="search" [(ngModel)]="queryString" aria-label="Search">
+            </form>
+        </div>
+
+        <p></p>
         <!-- CARDS -->
         <div class="row">
-            <div class="col-sm-4" *ngFor="let contato of contatos">
+            <div class="col-sm-12 col-lg-4" *ngFor="let contato of contatos | FilterPipe: queryString">
                 <div class="card" style="width: 18rem;">
                     <div class="card-block">
                         <div class="card-body">

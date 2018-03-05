@@ -12,9 +12,9 @@ export class ContatoService {
 
   constructor(private http: Http) { }
 
-  getAll(): Observable<Response> {
+  getAll(id: number): Observable<Response> {
     return this.http
-      .get(`${this.resourceUrl}/contatos`, { headers: this.headers })
+      .get(`${this.resourceUrl}/contatos/${id}`, { headers: this.headers })
       .map((res: Response) => {
         return res;
       });

@@ -27,6 +27,16 @@
     left: 47%;
 }
 
+#imgLogin {
+    width: 130px;
+    align-self: center;
+}
+
+.card-container {
+    background-color: #f1f1f1;
+    border: none;
+}
+
 
 /* .forgot-password:hover,
 .forgot-password:active,

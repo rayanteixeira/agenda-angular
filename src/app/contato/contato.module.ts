@@ -7,6 +7,9 @@ import { NovoContatoComponent } from './novo-contato/novo-contato.component';
 import { AlertModule } from 'ngx-bootstrap/alert/alert.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { FilterPipe } from '../config/filter.pipe';
+
+
 
 @NgModule({
   imports: [
@@ -15,11 +18,12 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     AlertModule,
     ModalModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
   ],
   declarations: [
     ContatoComponent,
-    NovoContatoComponent
+    NovoContatoComponent,
+    FilterPipe,
   ],
   providers: [
     ContatoService

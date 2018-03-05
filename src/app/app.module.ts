@@ -12,6 +12,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ContatoModule } from './contato/contato.module';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { LoginUsuarioComponent } from './usuario/login/login-usuario.component';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     ContatoModule
 
   ],
-  providers: [],
+  providers: [LoginUsuarioComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -22,10 +22,11 @@ export class NovoContatoComponent implements OnInit {
   titulo: string;
 
   contato: Contato;
-  usuario: Usuario = new Usuario( 1, 'Rayan Teixeira', 'rayanteixeira91@gmail.com');
+  usuario: Usuario;
   ngOnInit() {
     this.checkParams();
     this.contato = new Contato();
+    this.usuario = JSON.parse(localStorage.getItem('user'));
   }
 
   checkParams() {

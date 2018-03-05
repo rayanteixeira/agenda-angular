@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Usuario } from '../usuario/usuario.model';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Usuario } from '../usuario/usuario.model';
+import { LoginUsuarioComponent } from '../usuario/login/login-usuario.component';
 
 @Component({
   selector: 'app-navbar',
@@ -11,21 +12,23 @@ import { Router } from '@angular/router';
 export class NavbarComponent implements OnInit {
 
 
-  title = 'app';
   usuarioLogado: Usuario;
-  botaoSair: Boolean;
+  botaoSair: Boolean = false;
   local: any;
-  constructor(private router: Router) {
+
+  constructor(private router: Router, private login: LoginUsuarioComponent) {
+
+  }
+
+  ngOnInit() {
+
     this.usuarioLogado = JSON.parse(localStorage.getItem('user'));
-    if ( this.usuarioLogado !== null) {
+    if (this.usuarioLogado !== null) {
       this.botaoSair = true;
-    }else {
+    } else {
       this.botaoSair = false;
     }
   }
-  ngOnInit() {
-  }
-
   sair() {
     this.local = localStorage.removeItem('user');
     if (this.local !== null) {
@@ -33,7 +36,5 @@ export class NavbarComponent implements OnInit {
       this.router.navigate(['/']);
     }
 
-
   }
 }
-
